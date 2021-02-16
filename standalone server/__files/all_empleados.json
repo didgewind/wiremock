@@ -1,0 +1,40 @@
+{
+  "empleados": [
+      {
+          "cif": "23623453Y",
+          "nombre": "Mario",
+          "apellidos": "Vargas",
+          "edad": 21
+      },
+      {
+          "cif": "23453453Y",
+          "nombre": "Isabel",
+          "apellidos": "Fuentes",
+          "edad": 33
+      },
+      {
+          "cif": "90453453Y",
+          "nombre": "Simone",
+          "apellidos": "de Beauvoir",
+          "edad": 15
+      },
+      {
+          "cif": "12343255Q",
+          "nombre": "Pau",
+          "apellidos": "Gasol",
+          "edad": 53
+      },
+      {
+          "cif": "76534565W",
+          "nombre": "Miguel",
+          "apellidos": "Delibes",
+          "edad": 85
+      },
+      {
+          "cif": "56756743H",
+          "nombre": "Hakuri",
+          "apellidos": "Murakami",
+          "edad": 43
+      }
+  ]
+}

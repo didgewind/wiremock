@@ -1,0 +1,18 @@
+Proyecto para probar wiremock desde empleados-web. De momento tenemos el servidor standalone en la carpeta
+standalone server. Podemos lanzarlo con el comando 
+
+	java -jar wiremock-jre8-standalone-2.27.2.jar –-port 5555 --global-response-templating
+
+Esto lanza el server y crea dos carpetas, mappings y __files. En la primera podemos poner ficheros .json que 
+especifican los stubs, en la segunda el contenido de las respuestas (bodies, imágenes, etc).
+
+Hay mappings y files para todas las operaciones. El getOne y el Delete devuelven un empleado fijo con cif igual al
+indicado en la url. El post y el put exigen que el body contenga un empleado json con cif, nombre, apellidos y edad,
+y devuelven el mismo empleado.
+
+El parámetro --global-response-templating me permite usar variables {{ }} en las respuestas, por ejemplo
+al generar el cif del empleado que estoy devolviendo al solicitar un único empleado. A veces usamos llaves
+triples ({{{ }}}) para que nos parsee las variables como texto plano y no como html. Usamos además la
+librería que incluye el jre8 para que nos funcionen los placeholders y el json-unit (por ejemplo para validar
+el body en peticiones put y post).
+

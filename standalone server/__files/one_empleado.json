@@ -1,0 +1,6 @@
+{
+	"cif": "{{request.requestLine.pathSegments.[1]}}",
+	"nombre": "Mario",
+	"apellidos": "Vargas",
+	"edad": 21
+}

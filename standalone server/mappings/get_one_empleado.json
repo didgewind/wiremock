@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPattern": "/empleados/(\\d+)\\w/?"
+    },
+    "response": {
+        "status": 200,
+        "bodyFileName": "one_empleado.json",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

@@ -1,0 +1,65 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "urlPattern": "/empleados/?",
+        "bodyPatterns" : [ {
+	      "equalToJson" : 
+	      		{ 
+	      			"cif": "${json-unit.any-string}",
+	      			"nombre": "${json-unit.any-string}",
+	      			"apellidos": "${json-unit.any-string}",
+	      			"edad": "${json-unit.any-number}"
+	      	    },
+	      "ignoreArrayOrder" : true,
+	      "ignoreExtraElements" : true
+	    } ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{{{request.body}}}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "PUT",
+        "urlPattern": "/empleados/(\\d+)\\w/?",
+        "bodyPatterns" : [ {
+	      "equalToJson" : 
+	      		{ 
+	      			"cif": "${json-unit.any-string}",
+	      			"nombre": "${json-unit.any-string}",
+	      			"apellidos": "${json-unit.any-string}",
+	      			"edad": "${json-unit.any-number}"
+	      	    },
+	      "ignoreArrayOrder" : true,
+	      "ignoreExtraElements" : true
+	    } ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{{{request.body}}}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "DELETE",
+        "urlPattern": "/empleados/(\\d+)\\w/?"
+      },
+      "response": {
+        "status": 200,
+        "bodyFileName": "one_empleado.json",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+ }
