@@ -1,3 +1,0 @@
-{{#urlEncode decode=true}}
-{{request.body}}
-{{/urlEncode}}

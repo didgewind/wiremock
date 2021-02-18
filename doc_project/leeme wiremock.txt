@@ -1,7 +1,11 @@
 Proyecto para probar wiremock desde empleados-web (podemos usar el commit services_varios de éste,
-o el retries más coherentes). De momento tenemos el servidor standalone en la carpeta
-standalone server y un proyecto spring sidecar paralelo para hacer a wiremock partícipe del ecosistema
-de microservicios (con eureka y tal). Para ejecutarlo todo lanzaríamos primero el server wiremock con el comando 
+o el retries más coherentes). Consiste en un proyecto spring sidecar que primero lanza el servidor wiremock
+y luego el propio sidecar para hacer a wiremock partícipe del ecosistema
+de microservicios (con eureka y tal). WireMock usa como root la carpeta standalone server. Para info sobre
+wiremock ver Anotaciones sobre wiremock más abajo.
+
+En commits anteriores teníamos un sidecar puro y el jar de wiremock como server standalone en la carpeta indicada
+previemente. Para ejecutarlo todo en este caso lanzaríamos primero el server wiremock con el comando 
 
 	java -jar wiremock-jre8-standalone-2.27.2.jar --port 5555 --global-response-templating
 	
@@ -12,7 +16,7 @@ a http://localhost:5556/empleados hay que configurar la redirección con zuul, v
 
 Anotaciones sobre wiremock:
 
-Tras lanzar el server se crean si no existen ya dos carpetas, mappings y __files. En la primera podemos poner 
+Tras lanzar el server se crean si no existen ya dos carpetas, mappings y __files. En la primera podemos  
 soltar ficheros .json que especifican los stubs, en la segunda el contenido de las respuestas (bodies, imágenes, etc).
 
 Hay mappings y files para todas las operaciones. El getOne y el Delete devuelven un empleado fijo con cif igual al
