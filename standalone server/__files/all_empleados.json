@@ -1,5 +1,4 @@
-{
-  "empleados": [
+[
       {
           "cif": "23623453Y",
           "nombre": "Mario",
@@ -36,5 +35,4 @@
           "apellidos": "Murakami",
           "edad": 43
       }
-  ]
-}
+]

@@ -1,0 +1,33 @@
+spring:
+  application:
+     name: empleados-service
+
+eureka:
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+      
+server:
+# Puerto aleatorio
+#  port: ${PORT:0}
+  port: 5556
+  
+sidecar:
+  port: 5555
+  health-uri: http://localhost:5555/health-check/
+
+# Esto enruta las peticiones sobre /empleados desde el sidecar a wiremock
+# si intentamos acceder a la url del sidecar (p ej, http://localhost:5556/empleados).
+# Si lo intentamos consultando a eureka no haría falta, ya que en la InstanceInfo que
+# envía eureka de respuesta se coge el homePageUrl como url de petición (el sidecar
+# se ha encargado de registra en este caso http://localhost:5555/)
+# 
+zuul:
+  routes:
+    empleados:
+      url: http://localhost:5555/empleados/
+  
+ 

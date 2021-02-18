@@ -1,10 +1,19 @@
-Proyecto para probar wiremock desde empleados-web. De momento tenemos el servidor standalone en la carpeta
-standalone server. Podemos lanzarlo con el comando 
+Proyecto para probar wiremock desde empleados-web (podemos usar el commit services_varios de éste,
+o el retries más coherentes). De momento tenemos el servidor standalone en la carpeta
+standalone server y un proyecto spring sidecar paralelo para hacer a wiremock partícipe del ecosistema
+de microservicios (con eureka y tal). Para ejecutarlo todo lanzaríamos primero el server wiremock con el comando 
 
-	java -jar wiremock-jre8-standalone-2.27.2.jar –-port 5555 --global-response-templating
+	java -jar wiremock-jre8-standalone-2.27.2.jar --port 5555 --global-response-templating
+	
+Lo podemos lanzar externamente o desde eclipse como external tool (ver más abajo anotaciones sobre wiremock).
+A continuación lanzaríamos EmpleadosWireMockSidecar, que se registra como empleados-service en eureka y redirige
+las peticiones a wiremock (automáticamente si tenemos eureka enmedio, si queremos que redirija accediendo
+a http://localhost:5556/empleados hay que configurar la redirección con zuul, ver el fichero de configuración).
 
-Esto lanza el server y crea dos carpetas, mappings y __files. En la primera podemos poner ficheros .json que 
-especifican los stubs, en la segunda el contenido de las respuestas (bodies, imágenes, etc).
+Anotaciones sobre wiremock:
+
+Tras lanzar el server se crean si no existen ya dos carpetas, mappings y __files. En la primera podemos poner 
+soltar ficheros .json que especifican los stubs, en la segunda el contenido de las respuestas (bodies, imágenes, etc).
 
 Hay mappings y files para todas las operaciones. El getOne y el Delete devuelven un empleado fijo con cif igual al
 indicado en la url. El post y el put exigen que el body contenga un empleado json con cif, nombre, apellidos y edad,
